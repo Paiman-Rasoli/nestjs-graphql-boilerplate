@@ -19,4 +19,5 @@ async function bootstrap() {
     `🚀 Application is running on: http://localhost:${port} Environment: ${NODE_ENV}`,
   );
 }
+
 bootstrap();
