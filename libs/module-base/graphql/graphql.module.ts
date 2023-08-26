@@ -13,6 +13,10 @@ export class GraphQLModule {
           driver: ApolloDriver,
           playground: props.playground ?? false,
           sortSchema: true,
+          autoSchemaFile: props.codeFirstApproach
+            ? join(process.cwd(), 'src', 'schema.graphql')
+            : false,
+          path: '/graphql',
           context: ({ req, res }) => {
             const rawUser = req.headers['user'];
 
@@ -28,12 +32,11 @@ export class GraphQLModule {
               return { user: null, req, res };
             }
           },
-          path: '/graphql',
           fieldResolverEnhancers: ['guards', 'interceptors'],
           definitions: props.codeFirstApproach
             ? {}
             : {
-                path: `${process.cwd()}/graphql/generated/${
+                path: `${process.cwd()}/src/graphql/generated/${
                   props.moduleName
                 }.ts`,
                 outputAs: 'class',
