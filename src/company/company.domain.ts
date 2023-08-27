@@ -1,4 +1,6 @@
-export interface CompanyDomain {
+import { Company } from './dtos/types.dto';
+
+export interface CompanyDomain extends Company {
   id: number;
 
   name: string;

@@ -1,6 +1,6 @@
 import { EntitySchema, EntitySchemaOptions } from 'typeorm';
 import { CompanyDomain } from '../company.domain';
-import { INT_ID_COLUMN_OPTIONS } from 'libs/utils/db/id-utils';
+import { INT_ID_COLUMN_OPTIONS } from '@app/module-base';
 
 export type CompanyEntity = CompanyDomain;
 

@@ -1,4 +1,4 @@
-import { configuration } from 'libs/module-base';
+import { configuration } from '@app/module-base';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { CompanySchema } from '../company/datastore/company.entity';
 import { CreateCompanyTable1693150486500 } from '../../migrations/1693150486500-create-company-table';
