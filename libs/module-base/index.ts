@@ -1,3 +1,3 @@
+export * from './config';
+export * from './db';
 export * from './graphql/graphql.module';
-export * from './config/configuration';
-export * from './config/config.module';

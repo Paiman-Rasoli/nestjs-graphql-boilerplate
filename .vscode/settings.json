@@ -1,5 +1,6 @@
 {
   "prettier.configPath": "./.prettierrc",
   "editor.formatOnSave": true,
-  "cSpell.words": ["nestjs"]
+  "cSpell.words": ["nestjs", "TYPEORM"],
+  "files.eol": "\n"
 }
