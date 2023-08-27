@@ -18,10 +18,8 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@app/service-base": ["libs/module-base/src"],
-      "@app/service-base/*": ["libs/module-base/src/*"],
-      "@app/utils": ["libs/utils/src"],
-      "@app/utils/*": ["libs/utils/src/*"]
+      "@app/module-base": ["libs/module-base/index.ts"],
+      "@app/utils": ["libs/utils/index.ts"]
     }
   }
 }
