@@ -2,9 +2,9 @@
   "name": "nestjs-graphql-boilerplate",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Paiman Rasoli",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"libs/**/*.ts\"",
@@ -17,7 +17,20 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "cross-env NODE_ENV=test jest --config ./test/jest-e2e.json"
+    "test:e2e": "cross-env NODE_ENV=test jest --config ./test/jest-e2e.json",
+    "typeorm": "ts-node --require tsconfig-paths/register --project ./tsconfig.json ./node_modules/typeorm/cli",
+    "typeorm:generate-migration:dev": "cross-env NODE_ENV=dev yarn run typeorm migration:generate ./migrations/%npm_config_NAME% -d src/data-source/index.ts",
+    "typeorm:generate-migration:prod": "cross-env NODE_ENV=prod yarn run typeorm migration:generate ./migrations/%npm_config_NAME% -d src/data-source/index.ts",
+    "typeorm:generate-migration:test": "cross-env NODE_ENV=test yarn run typeorm migration:generate ./migrations/%npm_config_NAME% -d src/data-source/index.ts",
+    "typeorm:run-migrations:dev": "cross-env NODE_ENV=dev yarn run typeorm migration:run -d src/data-source/index.ts",
+    "typeorm:run-migrations:prod": "cross-env NODE_ENV=prod yarn run typeorm migration:run -d src/data-source/index.ts",
+    "typeorm:run-migrations:test": "cross-env NODE_ENV=test yarn run typeorm migration:run -d src/data-source/index.ts",
+    "typeorm:revert-migration:dev": "cross-env NODE_ENV=dev yarn run typeorm migration:revert -d src/data-source/index.ts",
+    "typeorm:revert-migration:prod": "cross-env NODE_ENV=prod yarn run typeorm migration:revert -d src/data-source/index.ts",
+    "typeorm:revert-migration:test": "cross-env NODE_ENV=test yarn run typeorm migration:revert -d src/data-source/index.ts",
+    "typeorm:create-migration:dev": "cross-env NODE_ENV=dev yarn run typeorm migration:create ./migrations/%npm_config_NAME%",
+    "typeorm:create-migration:prod": "cross-env NODE_ENV=prod yarn run typeorm migration:create ./migrations/%npm_config_NAME%",
+    "typeorm:create-migration:test": "cross-env NODE_ENV=test yarn run typeorm migration:create ./migrations/%npm_config_NAME%"
   },
   "dependencies": {
     "@apollo/server": "^4.9.2",
@@ -27,12 +40,15 @@
     "@nestjs/core": "^10.0.0",
     "@nestjs/graphql": "^12.0.8",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/typeorm": "^10.0.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "cross-env": "^7.0.3",
     "graphql": "^16.8.0",
+    "mysql2": "^3.6.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "typeorm": "^0.3.17"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
@@ -78,7 +94,7 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@app/service-base(|/.*)$": "<rootDir>/libs/service-base/src/$1",
+      "^@app/module-base(|/.*)$": "<rootDir>/libs/module-base/src/$1",
       "^@app/utils(|/.*)$": "<rootDir>/libs/utils/src/$1"
     }
   }
