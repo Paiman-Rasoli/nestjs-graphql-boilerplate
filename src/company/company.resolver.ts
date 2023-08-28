@@ -12,6 +12,13 @@ export class CompanyResolver {
     return this.companyService.companies();
   }
 
+  @Query(() => Company)
+  async company(
+    @Args('id', { type: () => Number }) id: number,
+  ): Promise<Company> {
+    return this.companyService.company(id);
+  }
+
   @Mutation(() => Company)
   async companyCreate(
     @Args('input') input: CompanyCreateInput,
