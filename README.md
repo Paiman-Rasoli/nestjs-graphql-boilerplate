@@ -20,3 +20,6 @@ in order to create new migration according to new entity or new changes to schem
 ```
 npm_config_NAME="add-a-new-column-to-company" yarn typeorm:generate-migration:dev
 ```
+
+## Contribution
+I would appreciate anyone to contribute. please create PR against `main` branch and need at least one review.
