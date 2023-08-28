@@ -28,4 +28,5 @@ type Mutation {
 
 type Query {
   companies: [Company]
+  company(id: Float!): Company!
 }

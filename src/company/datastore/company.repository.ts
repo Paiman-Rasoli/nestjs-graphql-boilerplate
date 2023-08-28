@@ -18,7 +18,7 @@ export class CompanyRepository extends Repository<CompanyEntity> {
     return companies?.map((company) => mapEntityToDomain(company));
   }
 
-  async createCompany(input: CompanyCreateInput) {
+  async createCompany(input: CompanyCreateInput): Promise<CompanyDomain> {
     const company: CompanyEntity = {
       id: generateIntegerId(),
       ...input,
@@ -33,5 +33,10 @@ export class CompanyRepository extends Repository<CompanyEntity> {
     } catch (err) {
       throw new CompanyDidNotCreateException();
     }
+  }
+
+  async getCompanyById(id: number): Promise<CompanyDomain> {
+    const company = await this.findOneBy({ id: id });
+    return mapEntityToDomain(company);
   }
 }
